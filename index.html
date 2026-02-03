@@ -1,0 +1,1336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Elite Miami Rental | Exotic & Luxury Car Rentals in Miami</title>
+  <meta name="description" content="Miami's premier exotic car rental. Ferrari, Lamborghini, Rolls-Royce & more. 1-hour delivery. 24/7 service. Book your dream car today.">
+  <meta name="keywords" content="exotic car rental Miami, luxury car rental, Ferrari rental Miami, Lamborghini rental, Rolls Royce rental Miami">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Elite Miami Rental | Exotic & Luxury Car Rentals">
+  <meta property="og:description" content="Miami's premier exotic car rental service. Ferrari, Lamborghini, Rolls-Royce delivered to your door.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://exoticmiamirental.com">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+
+  <style>
+    /* Homepage Specific Styles */
+    .hero {
+      min-height: 100vh;
+      position: relative;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0a0a0a 100%);
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+
+    .hero-bg::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at 20% 80%, rgba(212, 175, 55, 0.1) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 20%, rgba(212, 175, 55, 0.05) 0%, transparent 40%);
+    }
+
+    /* Video Background (uncomment to use) */
+    .hero-video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+      opacity: 0.4;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      padding: 0 8rem;
+      max-width: 800px;
+    }
+
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 1rem;
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 2rem;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: slideUp 1s ease forwards 1.8s;
+    }
+
+    .hero-tag::before {
+      content: '';
+      width: 40px;
+      height: 1px;
+      background: var(--gold);
+    }
+
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(3.5rem, 8vw, 6rem);
+      font-weight: 400;
+      line-height: 1.05;
+      margin-bottom: 2rem;
+      overflow: hidden;
+    }
+
+    .hero-title .line {
+      display: block;
+      opacity: 0;
+      transform: translateY(100%);
+      animation: revealText 1.2s ease forwards;
+    }
+
+    .hero-title .line:nth-child(1) { animation-delay: 2s; }
+    .hero-title .line:nth-child(2) { animation-delay: 2.2s; }
+
+    .hero-title .line span {
+      color: var(--gold);
+      font-style: italic;
+    }
+
+    .hero-description {
+      font-size: 1.1rem;
+      font-weight: 300;
+      color: var(--gray);
+      max-width: 500px;
+      line-height: 1.8;
+      margin-bottom: 3rem;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: slideUp 1s ease forwards 2.4s;
+    }
+
+    .hero-ctas {
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: slideUp 1s ease forwards 2.6s;
+    }
+
+    .hero-visual {
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 55%;
+      height: 80%;
+      z-index: 1;
+      opacity: 0;
+      animation: carReveal 1.5s ease forwards 2.8s;
+    }
+
+    @keyframes carReveal {
+      0% {
+        opacity: 0;
+        transform: translateY(-50%) translateX(100px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(-50%) translateX(0);
+      }
+    }
+
+    .hero-car-container {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero-car-image {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+      filter: drop-shadow(-20px 20px 60px rgba(0,0,0,0.8));
+      transition: transform 0.6s ease;
+    }
+
+    .hero-car-container:hover .hero-car-image {
+      transform: scale(1.02);
+    }
+
+    .hero-car-glow {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80%;
+      height: 100px;
+      background: radial-gradient(ellipse, rgba(0,0,0,0.6) 0%, transparent 70%);
+      filter: blur(20px);
+    }
+
+    .scroll-indicator {
+      position: absolute;
+      bottom: 3rem;
+      left: 8rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+      opacity: 0;
+      animation: fadeIn 1s ease forwards 3s;
+    }
+
+    .scroll-text {
+      font-size: 0.65rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gray);
+      writing-mode: vertical-rl;
+    }
+
+    .scroll-line {
+      width: 1px;
+      height: 60px;
+      background: linear-gradient(to bottom, var(--gold), transparent);
+      position: relative;
+    }
+
+    .scroll-line::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 20px;
+      background: var(--gold);
+      animation: scrollDown 2s ease-in-out infinite;
+    }
+
+    @keyframes scrollDown {
+      0% { top: 0; opacity: 1; }
+      100% { top: 100%; opacity: 0; }
+    }
+
+    /* Stats Bar */
+    .stats-bar {
+      background: var(--black-soft);
+      border-top: 1px solid rgba(255,255,255,0.05);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      padding: 3rem 8rem;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+    }
+
+    .stat-item {
+      text-align: center;
+      position: relative;
+    }
+
+    .stat-item:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      height: 40px;
+      width: 1px;
+      background: var(--gray-dark);
+    }
+
+    .stat-number {
+      font-family: var(--font-display);
+      font-size: 2.5rem;
+      color: var(--gold);
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-top: 0.5rem;
+    }
+
+    /* Featured Section */
+    .featured {
+      padding: 10rem 8rem;
+      background: var(--black);
+      position: relative;
+    }
+
+    .featured::before {
+      content: 'ELITE';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-family: var(--font-display);
+      font-size: 20vw;
+      font-weight: 400;
+      color: rgba(255,255,255,0.02);
+      white-space: nowrap;
+      pointer-events: none;
+    }
+
+    .car-showcase {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .car-card.large {
+      grid-column: span 2;
+      grid-row: span 2;
+    }
+
+    .car-card.large .car-image-container {
+      aspect-ratio: 16/12;
+    }
+
+    .car-card.large .car-content {
+      padding: 2.5rem;
+    }
+
+    .car-card.large .car-name {
+      font-size: 2rem;
+    }
+
+    .view-all-link {
+      text-align: center;
+      margin-top: 4rem;
+    }
+
+    /* Experience Preview */
+    .experience-preview {
+      padding: 10rem 8rem;
+      background: linear-gradient(180deg, var(--black-soft) 0%, var(--black) 100%);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6rem;
+      align-items: center;
+    }
+
+    .experience-content h2 {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 4vw, 3.5rem);
+      font-weight: 400;
+      line-height: 1.2;
+      margin-bottom: 1.5rem;
+    }
+
+    .experience-content h2 span {
+      color: var(--gold);
+      font-style: italic;
+    }
+
+    .experience-content p {
+      font-size: 1rem;
+      font-weight: 300;
+      color: var(--gray);
+      line-height: 1.9;
+      margin-bottom: 2.5rem;
+    }
+
+    .experience-features {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .experience-feature {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .experience-feature-icon {
+      width: 40px;
+      height: 40px;
+      background: rgba(212, 175, 55, 0.1);
+      border: 1px solid var(--gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .experience-feature-icon svg {
+      width: 18px;
+      height: 18px;
+      color: var(--gold);
+    }
+
+    .experience-feature span {
+      font-size: 0.9rem;
+      color: var(--white);
+    }
+
+    .experience-image {
+      position: relative;
+    }
+
+    .experience-image img {
+      width: 100%;
+      display: block;
+    }
+
+    .experience-image::before {
+      content: '';
+      position: absolute;
+      top: -20px;
+      left: -20px;
+      right: 20px;
+      bottom: 20px;
+      border: 1px solid var(--gold);
+      z-index: -1;
+    }
+
+    /* Testimonial Preview */
+    .testimonial-preview {
+      padding: 8rem 8rem;
+      background: var(--black);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .testimonial-preview::before {
+      content: '"';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-family: var(--font-display);
+      font-size: 40vw;
+      color: rgba(212, 175, 55, 0.03);
+      pointer-events: none;
+    }
+
+    .testimonial-content {
+      max-width: 800px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .testimonial-stars {
+      color: var(--gold);
+      font-size: 1.5rem;
+      letter-spacing: 0.2em;
+      margin-bottom: 2rem;
+    }
+
+    .testimonial-quote {
+      font-family: var(--font-display);
+      font-size: clamp(1.5rem, 3vw, 2rem);
+      font-weight: 400;
+      font-style: italic;
+      line-height: 1.6;
+      color: var(--white);
+      margin-bottom: 2rem;
+    }
+
+    .testimonial-author {
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--white);
+    }
+
+    .testimonial-author span {
+      color: var(--gold);
+      font-size: 0.8rem;
+      display: block;
+      margin-top: 0.5rem;
+    }
+
+    /* CTA Section */
+    .cta-section {
+      padding: 10rem 8rem;
+      background: linear-gradient(135deg, var(--black-soft) 0%, var(--black) 100%);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-section::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 800px;
+      height: 800px;
+      background: radial-gradient(circle, rgba(212, 175, 55, 0.08) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .cta-content {
+      position: relative;
+      z-index: 1;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .cta-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 400;
+      line-height: 1.15;
+      margin-bottom: 1.5rem;
+    }
+
+    .cta-title span {
+      color: var(--gold);
+    }
+
+    .cta-text {
+      font-size: 1.1rem;
+      font-weight: 300;
+      color: var(--gray);
+      line-height: 1.8;
+      margin-bottom: 3rem;
+    }
+
+    .cta-buttons {
+      display: flex;
+      gap: 1.5rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    /* Responsive */
+    @media (max-width: 1200px) {
+      .hero-visual {
+        width: 50%;
+      }
+    }
+
+    @media (max-width: 1024px) {
+      .hero-content {
+        padding: 0 2rem;
+        max-width: 100%;
+      }
+
+      .hero-visual {
+        display: none;
+      }
+
+      .scroll-indicator {
+        left: 2rem;
+      }
+
+      .stats-bar {
+        padding: 2rem;
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .stat-item:nth-child(2)::after {
+        display: none;
+      }
+
+      .featured {
+        padding: 6rem 2rem;
+      }
+
+      .car-showcase {
+        grid-template-columns: 1fr;
+      }
+
+      .car-card.large {
+        grid-column: span 1;
+        grid-row: span 1;
+      }
+
+      .car-card.large .car-image-container {
+        aspect-ratio: 16/10;
+      }
+
+      .experience-preview {
+        grid-template-columns: 1fr;
+        padding: 6rem 2rem;
+        gap: 4rem;
+      }
+
+      .experience-features {
+        grid-template-columns: 1fr;
+      }
+
+      .testimonial-preview {
+        padding: 6rem 2rem;
+      }
+
+      .cta-section {
+        padding: 6rem 2rem;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .stats-bar {
+        grid-template-columns: 1fr;
+        padding: 1.5rem;
+        gap: 0;
+      }
+
+      .stat-item {
+        padding: 1.25rem 0;
+        border-bottom: 1px solid rgba(255,255,255,0.05);
+      }
+
+      .stat-item:last-child {
+        border-bottom: none;
+      }
+
+      .stat-item::after {
+        display: none;
+      }
+
+      .stat-number {
+        font-size: 2rem;
+      }
+
+      .stat-label {
+        font-size: 0.6rem;
+      }
+
+      .hero-ctas {
+        flex-direction: column;
+        align-items: stretch;
+        width: 100%;
+        gap: 1rem;
+      }
+
+      .hero-ctas .btn-primary,
+      .hero-ctas .btn-whatsapp {
+        width: 100%;
+        justify-content: center;
+      }
+
+      /* Hero mobile enhancements */
+      .hero-content {
+        padding: 0 1.25rem;
+        padding-top: 2rem;
+      }
+
+      .hero-tag {
+        font-size: 0.6rem;
+        letter-spacing: 0.25em;
+        margin-bottom: 1.5rem;
+      }
+
+      .hero-tag::before {
+        width: 25px;
+      }
+
+      .hero-title {
+        font-size: 2.75rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .hero-description {
+        font-size: 1rem;
+        margin-bottom: 2rem;
+        line-height: 1.7;
+      }
+
+      .scroll-indicator {
+        left: 1.25rem;
+        bottom: 2rem;
+      }
+
+      .scroll-text {
+        font-size: 0.55rem;
+      }
+
+      .scroll-line {
+        height: 40px;
+      }
+
+      /* Featured section mobile */
+      .featured {
+        padding: 4rem 1.25rem;
+      }
+
+      .featured::before {
+        font-size: 30vw;
+      }
+
+      .car-showcase {
+        gap: 1.25rem;
+      }
+
+      .car-card.large .car-content {
+        padding: 1.5rem;
+      }
+
+      .car-card.large .car-name {
+        font-size: 1.5rem;
+      }
+
+      .view-all-link {
+        margin-top: 2.5rem;
+      }
+
+      /* Experience section mobile */
+      .experience-preview {
+        padding: 4rem 1.25rem;
+        gap: 3rem;
+      }
+
+      .experience-content h2 {
+        font-size: 2rem;
+      }
+
+      .experience-content p {
+        font-size: 0.95rem;
+      }
+
+      .experience-features {
+        gap: 1rem;
+        margin-bottom: 2rem;
+      }
+
+      .experience-feature {
+        background: rgba(255,255,255,0.02);
+        padding: 1rem;
+        border-radius: 8px;
+      }
+
+      .experience-feature-icon {
+        width: 36px;
+        height: 36px;
+      }
+
+      .experience-feature span {
+        font-size: 0.85rem;
+      }
+
+      .experience-image::before {
+        display: none;
+      }
+
+      /* Testimonial section mobile */
+      .testimonial-preview {
+        padding: 4rem 1.25rem;
+      }
+
+      .testimonial-stars {
+        font-size: 1.25rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .testimonial-quote {
+        font-size: 1.25rem;
+        line-height: 1.5;
+      }
+
+      .testimonial-author {
+        font-size: 0.9rem;
+      }
+
+      /* CTA section mobile */
+      .cta-section {
+        padding: 4rem 1.25rem;
+      }
+
+      .cta-title {
+        font-size: 2rem;
+      }
+
+      .cta-text {
+        font-size: 1rem;
+        margin-bottom: 2rem;
+      }
+
+      .cta-buttons {
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .cta-buttons .btn-primary,
+      .cta-buttons .btn-outline {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+
+    /* Extra small screens */
+    @media (max-width: 375px) {
+      .hero-title {
+        font-size: 2.25rem;
+      }
+
+      .hero-description {
+        font-size: 0.95rem;
+      }
+
+      .stat-number {
+        font-size: 1.75rem;
+      }
+
+      .experience-content h2 {
+        font-size: 1.75rem;
+      }
+
+      .testimonial-quote {
+        font-size: 1.1rem;
+      }
+
+      .cta-title {
+        font-size: 1.75rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Preloader -->
+  <div class="preloader">
+    <div class="preloader-logo">ELITE <span>MIAMI</span></div>
+    <div class="preloader-bar">
+      <div class="preloader-progress"></div>
+    </div>
+  </div>
+
+  <!-- Navigation -->
+  <nav>
+    <a href="index.html" class="logo">Elite <span>Miami</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="fleet.html">Fleet</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <a href="contact.html" class="nav-cta">Reserve Now</a>
+    <button class="mobile-menu-btn" aria-label="Toggle Menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu">
+    <ul class="mobile-menu-links">
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="fleet.html">Fleet</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="mobile-menu-contact">
+      <a href="tel:+17864810906">(786) 481-0906</a>
+      <span>Available 24/7</span>
+    </div>
+  </div>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+
+    <!-- Optional Video Background - uncomment to use -->
+    <!-- <video class="hero-video" autoplay muted loop playsinline>
+      <source src="videos/hero-bg.mp4" type="video/mp4">
+    </video> -->
+
+    <div class="hero-content">
+      <span class="hero-tag">Miami's Premier Exotic Rentals</span>
+      <h1 class="hero-title">
+        <span class="line">Drive the</span>
+        <span class="line"><span>Extraordinary</span></span>
+      </h1>
+      <p class="hero-description">
+        Curated collection of the world's most exclusive automobiles.
+        Delivered to your door within the hour.
+      </p>
+      <div class="hero-ctas">
+        <a href="fleet.html" class="btn-primary">
+          Explore Fleet
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
+        </a>
+        <a href="https://wa.me/17862022892?text=Hi!%20I'm%20interested%20in%20renting%20a%20car" class="btn-whatsapp" target="_blank">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+          </svg>
+          WhatsApp
+        </a>
+      </div>
+    </div>
+
+    <!-- Hero Car Visual -->
+    <div class="hero-visual">
+      <div class="hero-car-container">
+        <div class="hero-car-glow"></div>
+        <img src="https://www.pngplay.com/wp-content/uploads/13/Ferrari-SF90-Stradale-PNG-HD-Quality.png" alt="Ferrari SF90 Stradale" class="hero-car-image">
+      </div>
+    </div>
+
+    <div class="scroll-indicator">
+      <span class="scroll-text">Scroll</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- Stats Bar -->
+  <div class="stats-bar">
+    <div class="stat-item">
+      <div class="stat-number">500+</div>
+      <div class="stat-label">5-Star Reviews</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number">1hr</div>
+      <div class="stat-label">Delivery Time</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number">50+</div>
+      <div class="stat-label">Exotic Vehicles</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number">24/7</div>
+      <div class="stat-label">Concierge Service</div>
+    </div>
+  </div>
+
+  <!-- Marquee -->
+  <div class="marquee">
+    <div class="marquee-content">
+      <span class="marquee-item">Ferrari</span>
+      <span class="marquee-item">Lamborghini</span>
+      <span class="marquee-item">Rolls-Royce</span>
+      <span class="marquee-item">McLaren</span>
+      <span class="marquee-item">Bentley</span>
+      <span class="marquee-item">Porsche</span>
+      <span class="marquee-item">Mercedes-AMG</span>
+      <span class="marquee-item">Ferrari</span>
+      <span class="marquee-item">Lamborghini</span>
+      <span class="marquee-item">Rolls-Royce</span>
+      <span class="marquee-item">McLaren</span>
+      <span class="marquee-item">Bentley</span>
+      <span class="marquee-item">Porsche</span>
+      <span class="marquee-item">Mercedes-AMG</span>
+    </div>
+  </div>
+
+  <!-- Featured Cars -->
+  <section class="featured">
+    <div class="section-header">
+      <span class="section-tag">The Collection</span>
+      <h2 class="section-title">Featured Vehicles</h2>
+    </div>
+
+    <div class="car-showcase">
+      <!-- Ferrari F8 - Large Card -->
+      <a href="fleet.html" class="car-card large animate-on-scroll">
+        <div class="car-badge">Popular</div>
+        <div class="car-image-container">
+          <img src="https://images.unsplash.com/photo-1592198084033-aade902d1aae?w=1200&q=80" alt="Ferrari F8 Tributo" class="car-image">
+          <div class="car-image-overlay"></div>
+        </div>
+        <div class="car-content">
+          <span class="car-brand">Ferrari</span>
+          <h3 class="car-name">F8 Tributo Spider</h3>
+          <div class="car-specs">
+            <span class="spec"><strong>710</strong> HP</span>
+            <span class="spec"><strong>2.9s</strong> 0-60</span>
+            <span class="spec"><strong>V8</strong> Twin-Turbo</span>
+          </div>
+          <p class="car-price"><strong>$1,495</strong> <span>/ day</span></p>
+        </div>
+        <div class="car-cta">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
+        </div>
+      </a>
+
+      <!-- Lamborghini Huracan -->
+      <a href="fleet.html" class="car-card animate-on-scroll">
+        <div class="car-image-container">
+          <img src="https://images.unsplash.com/photo-1580414057403-c5f451f30e1c?w=800&q=80" alt="Lamborghini Huracan EVO" class="car-image">
+          <div class="car-image-overlay"></div>
+        </div>
+        <div class="car-content">
+          <span class="car-brand">Lamborghini</span>
+          <h3 class="car-name">Huracan EVO</h3>
+          <div class="car-specs">
+            <span class="spec"><strong>630</strong> HP</span>
+            <span class="spec"><strong>2.9s</strong> 0-60</span>
+          </div>
+          <p class="car-price"><strong>$1,199</strong> <span>/ day</span></p>
+        </div>
+        <div class="car-cta">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
+        </div>
+      </a>
+
+      <!-- Rolls Royce -->
+      <a href="fleet.html" class="car-card animate-on-scroll">
+        <div class="car-image-container">
+          <img src="https://images.unsplash.com/photo-1563720360172-67b8f3dce741?w=800&q=80" alt="Rolls-Royce Cullinan" class="car-image">
+          <div class="car-image-overlay"></div>
+        </div>
+        <div class="car-content">
+          <span class="car-brand">Rolls-Royce</span>
+          <h3 class="car-name">Cullinan</h3>
+          <div class="car-specs">
+            <span class="spec"><strong>563</strong> HP</span>
+            <span class="spec"><strong>V12</strong> Engine</span>
+          </div>
+          <p class="car-price"><strong>$1,299</strong> <span>/ day</span></p>
+        </div>
+        <div class="car-cta">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
+        </div>
+      </a>
+
+      <!-- Lamborghini Urus -->
+      <a href="fleet.html" class="car-card animate-on-scroll">
+        <div class="car-image-container">
+          <img src="https://images.unsplash.com/photo-1669214395135-b7a72ba68fc3?w=800&q=80" alt="Lamborghini Urus" class="car-image">
+          <div class="car-image-overlay"></div>
+        </div>
+        <div class="car-content">
+          <span class="car-brand">Lamborghini</span>
+          <h3 class="car-name">Urus</h3>
+          <div class="car-specs">
+            <span class="spec"><strong>641</strong> HP</span>
+            <span class="spec"><strong>3.5s</strong> 0-60</span>
+          </div>
+          <p class="car-price"><strong>$995</strong> <span>/ day</span></p>
+        </div>
+        <div class="car-cta">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
+        </div>
+      </a>
+
+      <!-- Mercedes G63 -->
+      <a href="fleet.html" class="car-card animate-on-scroll">
+        <div class="car-image-container">
+          <img src="https://images.unsplash.com/photo-1519245659620-e859806a8d3b?w=800&q=80" alt="Mercedes G63" class="car-image">
+          <div class="car-image-overlay"></div>
+        </div>
+        <div class="car-content">
+          <span class="car-brand">Mercedes-AMG</span>
+          <h3 class="car-name">G63</h3>
+          <div class="car-specs">
+            <span class="spec"><strong>577</strong> HP</span>
+            <span class="spec"><strong>V8</strong> Biturbo</span>
+          </div>
+          <p class="car-price"><strong>$699</strong> <span>/ day</span></p>
+        </div>
+        <div class="car-cta">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
+        </div>
+      </a>
+    </div>
+
+    <div class="view-all-link">
+      <a href="fleet.html" class="btn-gold-outline">View All Vehicles</a>
+    </div>
+  </section>
+
+  <!-- Experience Preview -->
+  <section class="experience-preview">
+    <div class="experience-content animate-on-scroll">
+      <span class="section-tag" style="justify-content: flex-start;">Why Elite Miami</span>
+      <h2>A Rental Experience <span>Unlike Any Other</span></h2>
+      <p>
+        We're not just a rental company. We're your personal concierge to Miami's most exclusive
+        driving experiences. Every vehicle is meticulously maintained, detailed before delivery,
+        and brought directly to you - wherever you are.
+      </p>
+      <div class="experience-features">
+        <div class="experience-feature">
+          <div class="experience-feature-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </div>
+          <span>1-Hour Delivery</span>
+        </div>
+        <div class="experience-feature">
+          <div class="experience-feature-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+            </svg>
+          </div>
+          <span>Full Insurance</span>
+        </div>
+        <div class="experience-feature">
+          <div class="experience-feature-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+            </svg>
+          </div>
+          <span>Pristine Condition</span>
+        </div>
+        <div class="experience-feature">
+          <div class="experience-feature-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </div>
+          <span>24/7 Support</span>
+        </div>
+      </div>
+      <a href="about.html" class="btn-primary">
+        Learn More
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+        </svg>
+      </a>
+    </div>
+    <div class="experience-image animate-on-scroll">
+      <img src="https://images.unsplash.com/photo-1494976388531-d1058494cdd8?w=800&q=80" alt="Luxury Experience">
+    </div>
+  </section>
+
+  <!-- Testimonial Preview -->
+  <section class="testimonial-preview">
+    <div class="testimonial-content animate-on-scroll">
+      <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+      <p class="testimonial-quote">
+        "Hands down the best exotic car rental company in Miami. Unbeatable prices,
+        top-tier customer service. Big shoutout to Jay - he's the guy to go to."
+      </p>
+      <div class="testimonial-author">
+        Alejandro S.
+        <span>Verified Rental - Google</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta-section">
+    <div class="cta-content animate-on-scroll">
+      <span class="section-tag">Ready to Drive</span>
+      <h2 class="cta-title">Your Miami Experience <span>Starts Here</span></h2>
+      <p class="cta-text">
+        From South Beach to Brickell, make every moment unforgettable.
+        Same-day delivery available for most vehicles.
+      </p>
+      <div class="cta-buttons">
+        <a href="tel:+17864810906" class="btn-primary">
+          Call (786) 481-0906
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+          </svg>
+        </a>
+        <a href="contact.html" class="btn-outline">Get a Quote</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Bar -->
+  <div class="contact-bar">
+    <div class="contact-item">
+      <div class="contact-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+        </svg>
+      </div>
+      <div class="contact-details">
+        <span>Call Us</span>
+        <a href="tel:+17864810906">(786) 481-0906</a>
+      </div>
+    </div>
+    <div class="contact-item">
+      <div class="contact-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+          <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+        </svg>
+      </div>
+      <div class="contact-details">
+        <span>Location</span>
+        <p>300 Alton Rd #304, Miami Beach</p>
+      </div>
+    </div>
+    <div class="contact-item">
+      <div class="contact-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+      </div>
+      <div class="contact-details">
+        <span>Available</span>
+        <p>24/7 Service</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo">ELITE <span>MIAMI</span></div>
+        <p class="footer-desc">
+          Miami's most-reviewed exotic car rental. Curated collection.
+          White-glove service. Unforgettable experiences.
+        </p>
+        <div class="footer-social">
+          <a href="https://instagram.com/exoticmiamirental" target="_blank" aria-label="Instagram">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+            </svg>
+          </a>
+          <a href="#" aria-label="Facebook">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/>
+            </svg>
+          </a>
+          <a href="#" aria-label="TikTok">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-5.2 1.74 2.89 2.89 0 012.31-4.64 2.93 2.93 0 01.88.13V9.4a6.84 6.84 0 00-1-.05A6.33 6.33 0 005 20.1a6.34 6.34 0 0010.86-4.43v-7a8.16 8.16 0 004.77 1.52v-3.4a4.85 4.85 0 01-1-.1z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul class="footer-links">
+          <li><a href="fleet.html">Our Fleet</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Vehicle Types</h4>
+        <ul class="footer-links">
+          <li><a href="fleet.html">Supercars</a></li>
+          <li><a href="fleet.html">Luxury Sedans</a></li>
+          <li><a href="fleet.html">Premium SUVs</a></li>
+          <li><a href="fleet.html">Convertibles</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul class="footer-links">
+          <li><a href="tel:+17864810906">(786) 481-0906</a></li>
+          <li><a href="tel:+13055217999">(305) 521-7999</a></li>
+          <li><a href="https://wa.me/17862022892" target="_blank">WhatsApp</a></li>
+          <li><a href="mailto:info@exoticmiamirental.com">Email Us</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">&copy; 2026 Elite Miami Rental. All rights reserved.</p>
+      <div class="footer-legal">
+        <a href="terms.html">Terms of Service</a>
+        <a href="privacy.html">Privacy Policy</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating WhatsApp Button -->
+  <a href="https://wa.me/17862022892?text=Hi!%20I'm%20interested%20in%20renting%20a%20car" class="whatsapp-float" target="_blank" aria-label="Chat on WhatsApp">
+    <span class="whatsapp-tooltip">Chat with us!</span>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+    </svg>
+  </a>
+
+  <script>
+    // Preloader
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        document.querySelector('.preloader').classList.add('hidden');
+      }, 1700);
+    });
+
+    // Nav scroll effect
+    window.addEventListener('scroll', () => {
+      const nav = document.querySelector('nav');
+      if (window.scrollY > 50) {
+        nav.classList.add('scrolled');
+      } else {
+        nav.classList.remove('scrolled');
+      }
+    });
+
+    // Mobile Menu Toggle
+    const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+    const mobileMenu = document.querySelector('.mobile-menu');
+
+    mobileMenuBtn.addEventListener('click', () => {
+      mobileMenuBtn.classList.toggle('active');
+      mobileMenu.classList.toggle('active');
+      document.body.classList.toggle('menu-open');
+    });
+
+    // Close mobile menu when clicking a link
+    document.querySelectorAll('.mobile-menu-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenuBtn.classList.remove('active');
+        mobileMenu.classList.remove('active');
+        document.body.classList.remove('menu-open');
+      });
+    });
+
+    // Intersection Observer for animations
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.animate-on-scroll').forEach(el => {
+      observer.observe(el);
+    });
+
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+  </script>
+</body>
+</html>
