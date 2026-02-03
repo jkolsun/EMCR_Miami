@@ -527,7 +527,7 @@
       }
     }
 
-    /* Mobile Hero Background - Stunning Visual */
+    /* Mobile Hero Background - Stunning Slideshow */
     .hero-mobile-bg {
       display: none;
       position: absolute;
@@ -536,14 +536,79 @@
       overflow: hidden;
     }
 
-    .hero-mobile-bg::before {
-      content: '';
+    .hero-slide {
       position: absolute;
       inset: 0;
-      background: url('https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=1200&q=85') center center/cover no-repeat;
+      background-size: cover;
+      background-position: center;
       filter: brightness(0.3) saturate(1.2);
       transform: scale(1.1);
-      animation: slowZoom 20s ease-in-out infinite alternate;
+      opacity: 0;
+      animation: slideshow 50s ease-in-out infinite;
+    }
+
+    /* 10 slides, each visible for 5s with fade transitions */
+    .hero-slide:nth-child(1) {
+      background-image: url('https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=1200&q=85');
+      animation-delay: 0s;
+    }
+    .hero-slide:nth-child(2) {
+      background-image: url('https://images.unsplash.com/photo-1583121274602-3e2820c69888?w=1200&q=85');
+      animation-delay: 5s;
+    }
+    .hero-slide:nth-child(3) {
+      background-image: url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=1200&q=85');
+      animation-delay: 10s;
+    }
+    .hero-slide:nth-child(4) {
+      background-image: url('https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?w=1200&q=85');
+      animation-delay: 15s;
+    }
+    .hero-slide:nth-child(5) {
+      background-image: url('https://images.unsplash.com/photo-1580414057403-c5f451f30e1c?w=1200&q=85');
+      animation-delay: 20s;
+    }
+    .hero-slide:nth-child(6) {
+      background-image: url('https://images.unsplash.com/photo-1563720360172-67b8f3dce741?w=1200&q=85');
+      animation-delay: 25s;
+    }
+    .hero-slide:nth-child(7) {
+      background-image: url('https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?w=1200&q=85');
+      animation-delay: 30s;
+    }
+    .hero-slide:nth-child(8) {
+      background-image: url('https://images.unsplash.com/photo-1592198084033-aade902d1aae?w=1200&q=85');
+      animation-delay: 35s;
+    }
+    .hero-slide:nth-child(9) {
+      background-image: url('https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=1200&q=85');
+      animation-delay: 40s;
+    }
+    .hero-slide:nth-child(10) {
+      background-image: url('https://images.unsplash.com/photo-1494976388531-d1058494cdd8?w=1200&q=85');
+      animation-delay: 45s;
+    }
+
+    @keyframes slideshow {
+      0% {
+        opacity: 0;
+        transform: scale(1.1);
+      }
+      2% {
+        opacity: 1;
+      }
+      10% {
+        opacity: 1;
+        transform: scale(1.15);
+      }
+      12% {
+        opacity: 0;
+        transform: scale(1.2);
+      }
+      100% {
+        opacity: 0;
+        transform: scale(1.1);
+      }
     }
 
     .hero-mobile-bg::after {
@@ -553,11 +618,7 @@
       background:
         linear-gradient(180deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 40%, rgba(0,0,0,0.8) 100%),
         radial-gradient(ellipse at 50% 100%, rgba(212,175,55,0.15) 0%, transparent 60%);
-    }
-
-    @keyframes slowZoom {
-      0% { transform: scale(1.1); }
-      100% { transform: scale(1.2); }
+      z-index: 1;
     }
 
     /* Animated Light Streaks */
@@ -1079,8 +1140,19 @@
   <section class="hero">
     <div class="hero-bg"></div>
 
-    <!-- Mobile-Only Stunning Background -->
-    <div class="hero-mobile-bg"></div>
+    <!-- Mobile-Only Stunning Background Slideshow -->
+    <div class="hero-mobile-bg">
+      <div class="hero-slide"></div>
+      <div class="hero-slide"></div>
+      <div class="hero-slide"></div>
+      <div class="hero-slide"></div>
+      <div class="hero-slide"></div>
+      <div class="hero-slide"></div>
+      <div class="hero-slide"></div>
+      <div class="hero-slide"></div>
+      <div class="hero-slide"></div>
+      <div class="hero-slide"></div>
+    </div>
     <div class="hero-light-streaks">
       <div class="light-streak"></div>
       <div class="light-streak"></div>
