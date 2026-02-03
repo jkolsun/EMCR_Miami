@@ -527,7 +527,199 @@
       }
     }
 
+    /* Mobile Hero Background - Stunning Visual */
+    .hero-mobile-bg {
+      display: none;
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    .hero-mobile-bg::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url('https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=1200&q=85') center center/cover no-repeat;
+      filter: brightness(0.3) saturate(1.2);
+      transform: scale(1.1);
+      animation: slowZoom 20s ease-in-out infinite alternate;
+    }
+
+    .hero-mobile-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 40%, rgba(0,0,0,0.8) 100%),
+        radial-gradient(ellipse at 50% 100%, rgba(212,175,55,0.15) 0%, transparent 60%);
+    }
+
+    @keyframes slowZoom {
+      0% { transform: scale(1.1); }
+      100% { transform: scale(1.2); }
+    }
+
+    /* Animated Light Streaks */
+    .hero-light-streaks {
+      display: none;
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      overflow: hidden;
+      pointer-events: none;
+    }
+
+    .light-streak {
+      position: absolute;
+      width: 2px;
+      height: 100px;
+      background: linear-gradient(to bottom, transparent, rgba(212,175,55,0.6), transparent);
+      animation: streak 4s ease-in-out infinite;
+    }
+
+    .light-streak:nth-child(1) {
+      left: 10%;
+      animation-delay: 0s;
+      height: 80px;
+    }
+
+    .light-streak:nth-child(2) {
+      left: 25%;
+      animation-delay: 1.2s;
+      height: 120px;
+    }
+
+    .light-streak:nth-child(3) {
+      left: 45%;
+      animation-delay: 0.5s;
+      height: 90px;
+    }
+
+    .light-streak:nth-child(4) {
+      left: 70%;
+      animation-delay: 2s;
+      height: 110px;
+    }
+
+    .light-streak:nth-child(5) {
+      left: 85%;
+      animation-delay: 1.5s;
+      height: 70px;
+    }
+
+    @keyframes streak {
+      0%, 100% {
+        transform: translateY(-100%);
+        opacity: 0;
+      }
+      10% {
+        opacity: 1;
+      }
+      90% {
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(calc(100vh + 100px));
+        opacity: 0;
+      }
+    }
+
+    /* Animated Gold Glow Orbs */
+    .hero-glow-orbs {
+      display: none;
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      overflow: hidden;
+      pointer-events: none;
+    }
+
+    .glow-orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(60px);
+      opacity: 0.4;
+      animation: orbFloat 8s ease-in-out infinite;
+    }
+
+    .glow-orb:nth-child(1) {
+      width: 200px;
+      height: 200px;
+      background: radial-gradient(circle, rgba(212,175,55,0.5) 0%, transparent 70%);
+      top: 20%;
+      right: -50px;
+      animation-delay: 0s;
+    }
+
+    .glow-orb:nth-child(2) {
+      width: 150px;
+      height: 150px;
+      background: radial-gradient(circle, rgba(212,175,55,0.3) 0%, transparent 70%);
+      bottom: 30%;
+      left: -30px;
+      animation-delay: 2s;
+    }
+
+    .glow-orb:nth-child(3) {
+      width: 100px;
+      height: 100px;
+      background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 70%);
+      top: 60%;
+      right: 20%;
+      animation-delay: 4s;
+    }
+
+    @keyframes orbFloat {
+      0%, 100% {
+        transform: translate(0, 0) scale(1);
+      }
+      25% {
+        transform: translate(20px, -30px) scale(1.1);
+      }
+      50% {
+        transform: translate(-10px, 20px) scale(0.9);
+      }
+      75% {
+        transform: translate(15px, 10px) scale(1.05);
+      }
+    }
+
+    /* Animated Bottom Gradient Line */
+    .hero-gradient-line {
+      display: none;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg,
+        transparent 0%,
+        var(--gold) 20%,
+        var(--gold) 50%,
+        var(--gold) 80%,
+        transparent 100%
+      );
+      z-index: 2;
+    }
+
+    .hero-gradient-line::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: inherit;
+      filter: blur(10px);
+      opacity: 0.8;
+    }
+
     @media (max-width: 1024px) {
+      .hero-mobile-bg,
+      .hero-light-streaks,
+      .hero-glow-orbs,
+      .hero-gradient-line {
+        display: block;
+      }
+
       .hero-content {
         padding: 0 2rem;
         max-width: 100%;
@@ -587,6 +779,43 @@
     }
 
     @media (max-width: 640px) {
+      /* Enhanced Mobile Hero Text */
+      .hero-content {
+        position: relative;
+        z-index: 3;
+      }
+
+      .hero-title {
+        text-shadow: 0 4px 30px rgba(0,0,0,0.8);
+      }
+
+      .hero-title .line span {
+        background: linear-gradient(135deg, var(--gold) 0%, #f5e6a3 50%, var(--gold) 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        animation: shimmer 3s ease-in-out infinite;
+        background-size: 200% 100%;
+      }
+
+      @keyframes shimmer {
+        0%, 100% { background-position: 0% center; }
+        50% { background-position: 100% center; }
+      }
+
+      .hero-description {
+        text-shadow: 0 2px 20px rgba(0,0,0,0.7);
+      }
+
+      .hero-tag {
+        background: rgba(0,0,0,0.3);
+        padding: 0.5rem 1rem;
+        border-radius: 4px;
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border: 1px solid rgba(212,175,55,0.2);
+      }
+
       .stats-bar {
         grid-template-columns: 1fr;
         padding: 1.5rem;
@@ -849,6 +1078,22 @@
   <!-- Hero Section -->
   <section class="hero">
     <div class="hero-bg"></div>
+
+    <!-- Mobile-Only Stunning Background -->
+    <div class="hero-mobile-bg"></div>
+    <div class="hero-light-streaks">
+      <div class="light-streak"></div>
+      <div class="light-streak"></div>
+      <div class="light-streak"></div>
+      <div class="light-streak"></div>
+      <div class="light-streak"></div>
+    </div>
+    <div class="hero-glow-orbs">
+      <div class="glow-orb"></div>
+      <div class="glow-orb"></div>
+      <div class="glow-orb"></div>
+    </div>
+    <div class="hero-gradient-line"></div>
 
     <!-- Optional Video Background - uncomment to use -->
     <!-- <video class="hero-video" autoplay muted loop playsinline>
